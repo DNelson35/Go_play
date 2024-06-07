@@ -12,7 +12,7 @@ import (
 )
 
 
-// var name string = "Damien"
+var name string = "Damien"
 
 func main() {
 	// fmt.Printf("Hello, World! My name is '%s'\n", name)
@@ -21,7 +21,7 @@ func main() {
 	log.SetPrefix("greetings: ")
 	log.SetFlags(0)
 
-	message, err := greetings.Greeting("")
+	message, err := greetings.Greeting(name)
 
 	if err != nil {
 		log.Fatal(err)
