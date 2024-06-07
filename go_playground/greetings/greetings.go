@@ -13,6 +13,25 @@ func Greeting(name string) (string, error) {
 	return message, nil
 }
 
+
+func MultiGreet(names []string) (map[string]string, error) {
+	messages := make(map[string]string)
+
+	for _, name := range names {
+		message, err := Greeting(name)
+		
+		if err != nil {
+			return nil, err
+		}
+		messages[name] = message
+
+	}
+
+	return messages, nil
+}
+
+
+
 func randFormat() string {
 	formats := []string{
 		"Hi, %v. Welcome!",
