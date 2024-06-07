@@ -2,7 +2,10 @@ package main
 
 import "fmt"
 
-var name string = "Damien"
+import "rsc.io/quote"
+
+// var name string = "Damien"
 func main() {
-	fmt.Printf("Hello, World! My name is '%s'\n", name)
+	// fmt.Printf("Hello, World! My name is '%s'\n", name)
+	fmt.Println(quote.Go())
 }
