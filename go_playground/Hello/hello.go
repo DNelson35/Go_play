@@ -1,11 +1,21 @@
 package main
 
-import "fmt"
+// import "fmt"
 
-import "rsc.io/quote"
+// import "rsc.io/quote"
 
-// var name string = "Damien"
+import (
+	"fmt"
+
+	"example.com/greetings"
+)
+
+
+var name string = "Damien"
 func main() {
 	// fmt.Printf("Hello, World! My name is '%s'\n", name)
-	fmt.Println(quote.Go())
+	// fmt.Println(quote.Go())
+	message := greetings.Greeting(name)
+
+	fmt.Println(message)
 }
