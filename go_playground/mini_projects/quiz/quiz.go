@@ -1,40 +1,54 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 	"time"
 )
 
 func main() {
 	fmt.Println("Welcome to my quiz game!")
-	fmt.Printf("would you like to play (y/n)? ")
-	var input string
-	fmt.Scan(&input)
+	fmt.Printf("Would you like to play (y/n)? ")
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err!= nil {
+		fmt.Println("Error reading input:", err)
+		return
+	}
+	input = strings.TrimSpace(input) // Remove trailing newline
 
-	if input == "n" || input == ""{
-		fmt.Println("\nsorry to hear that maybe next time, goodbye.")
+	if input == "n" || input == "" {
+		fmt.Println("\nSorry to hear that. Maybe next time, goodbye.")
 		return
 	}
 
-	fmt.Println("Awesome lets get started...")
+	fmt.Println("Awesome, let's get started...")
 
 	time.Sleep(2 * time.Second)
 
-	fmt.Println("\033[2J")
+	clearScreen()
 
-	fmt.Printf("question 1: who am I? ")
-	fmt.Scan(&input)
+	fmt.Printf("Question 1: Who am I? ")
+	input, err = reader.ReadString('\n')
+	if err!= nil {
+		fmt.Println("Error reading input:", err)
+		return
+	}
+	input = strings.TrimSpace(input) // Remove trailing newline
 
-	if input != "damien"{
-		fmt.Printf("sorry %v is incorrect\n", input)
-		fmt.Printf("try again next time...")
-
+	if input != "Damien" {
+		fmt.Printf("Sorry, %s is incorrect.\n", input)
+		fmt.Printf("Try again next time...\n")
 		time.Sleep(2 * time.Second)
 		return
 	}
 
+	fmt.Println("You answered correctly.")
+	// Add logic here to continue with the next question or exit the game
+}
 
-
-
-
+func clearScreen() {
+	fmt.Print("\033c") // ANSI escape sequence to clear the screen
 }
