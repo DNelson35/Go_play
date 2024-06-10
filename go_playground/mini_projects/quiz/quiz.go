@@ -36,8 +36,11 @@ func main() {
 	time.Sleep(2 * time.Second) // if yes we print message wait 2 seconds then clear screen
 
 	clearScreen()
+    score := 0
 
 	for question, answer := range questions{
+		fmt.Printf("Score = %v\n", score)
+
 		fmt.Printf("%v", question)
 		input, err = reader.ReadString('\n')
 		if err != nil {
@@ -53,17 +56,19 @@ func main() {
 			fmt.Printf("Sorry, %s is incorrect.\n", input)
 			fmt.Printf("Try again next time...\n")
 			time.Sleep(2 * time.Second)
-			return
+			clearScreen()
+		} else  {
+			fmt.Println("You answered correctly.")
+			score ++
+			time.Sleep(2 * time.Second)
+			clearScreen()
 		}
-
-		fmt.Println("You answered correctly.")
-		time.Sleep(2 * time.Second)
-		clearScreen()
 		
 	}
-
+    fmt.Printf("Final Score = %v out of %v\n", score, len(questions))
 }
 
 func clearScreen() {
 	fmt.Print("\033c") // ANSI escape sequence to clear the screen
 }
+
