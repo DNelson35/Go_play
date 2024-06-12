@@ -9,17 +9,17 @@ import (
 )
 
 func main() {
-	fmt.Println("Welcome to my quiz game!") // Println adds newline at the end
-	fmt.Printf("Would you like to play (y/n)? ") // printf allows variables and continues in same line
-	reader := bufio.NewReader(os.Stdin) // look up how the buffer works and what the reder is and how and why this is better than simply scanning in text form stdin
-	input, err := reader.ReadString('\n') // telling the reader to read stdin up untill new line
+	fmt.Println("Welcome to my quiz game!") 
+	fmt.Printf("Would you like to play (y/n)? ") 
+	reader := bufio.NewReader(os.Stdin) 
+	input, err := reader.ReadString('\n') 
 	if err!= nil {
-		fmt.Println("Error reading input:", err) // if error print message quit program
+		fmt.Println("Error reading input:", err) 
 		return
 	}
-	input = strings.TrimSpace(input) // Remove trailing newline
+	input = strings.TrimSpace(input) 
 
-	if strings.ToLower(input) != "y" { // exit program if they don't answer yes
+	if strings.ToLower(input) != "y" { 
 		fmt.Println("\nSorry to hear that. Maybe next time, goodbye.")
 		return
 	}
@@ -33,7 +33,7 @@ func main() {
 
 	fmt.Println("Awesome, let's get started...")
 
-	time.Sleep(2 * time.Second) // if yes we print message wait 2 seconds then clear screen
+	time.Sleep(2 * time.Second) 
 
 	clearScreen()
     score := 0
@@ -69,6 +69,6 @@ func main() {
 }
 
 func clearScreen() {
-	fmt.Print("\033c") // ANSI escape sequence to clear the screen
+	fmt.Print("\033c") 
 }
 
