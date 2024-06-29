@@ -1,8 +1,8 @@
 package main
 
 import (
+	"fmt"
 	"learn/utils"
-	// "fmt"
 	// "strings"
 	// "os"
 	// "io"
@@ -31,7 +31,8 @@ func main(){
 
 	// utils.SumMul(3,5)
 
-	utils.Primefactor(600851475143)
+	// utils.Primefactor(600851475143)
+	fmt.Println(utils.LgPalindrom())
 
 
 

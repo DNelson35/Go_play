@@ -2,7 +2,8 @@ package utils
 
 import "fmt"
 
-func SumMul(x , y int) {
+
+func SumMul(x , y int) int {
 	sum := 0
 	for i:=0; i < 1000; i++ {
 		if i % x == 0 && i % y == 0 {
@@ -16,7 +17,7 @@ func SumMul(x , y int) {
 			continue
 		}
 	}
-	fmt.Println(sum)
+	return sum
 }
 
 
@@ -36,7 +37,7 @@ func Fibonacci() func(x int) int { // for eular project find sum of all even num
 	}
 }
 
-func Primefactor(num int) {
+func Primefactor(num int) int {
 	result := num
 
 	i := 2
@@ -48,6 +49,36 @@ func Primefactor(num int) {
 		i = i + 1
 	}
 
-	fmt.Println(result)
+	return result
 }
 
+
+func isPalindrome(number int) bool {
+    var reversed int
+    var currentNumber = number
+
+    for currentNumber > 0 {
+        reversed = reversed*10 + currentNumber%10
+        currentNumber /= 10
+    }
+    
+    return reversed == number 
+}
+
+func LgPalindrom() int {
+    var maxProduct int
+    for i := 990; i >= 100; i -= 11 {
+        for j := 999; j >= 100; j-- {
+            product := i * j
+
+            if product > maxProduct && isPalindrome(product) {
+                maxProduct = product
+				fmt.Println(i, j)
+                break
+            } else if maxProduct > product {
+                break
+            }
+        }
+    }
+    return maxProduct
+}
