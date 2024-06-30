@@ -29,11 +29,11 @@ func main(){
 	// r := utils.NewRot13Reader(s)
 	// io.Copy(os.Stdout, &r)
 
-	// utils.SumMul(3,5)
+	fmt.Println(utils.SumMul(3,5))
 
 	// fmt.Println(utils.Primefactor(600851475143))
 	// fmt.Println(utils.LgPalindrom())
-	fmt.Println(utils.FindDiffSquares(100))
+	// fmt.Println(utils.FindDiffSquares(100))
 
 
 

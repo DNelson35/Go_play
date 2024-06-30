@@ -3,20 +3,14 @@ package utils
 import (
 	"fmt"
 	"math"
-	"time"
+	// "time"
 )
 
 
 func SumMul(x , y int) int {
 	sum := 0
 	for i:=0; i < 1000; i++ {
-		if i % x == 0 && i % y == 0 {
-			sum += i
-			continue
-		}else if i % x == 0 {
-			sum += i
-			continue
-		}else if i % y == 0 {
+		if i % x == 0 || i % y == 0 {
 			sum += i
 			continue
 		}
