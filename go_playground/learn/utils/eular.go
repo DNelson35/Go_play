@@ -1,6 +1,10 @@
 package utils
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"time"
+)
 
 
 func SumMul(x , y int) int {
@@ -40,13 +44,13 @@ func Fibonacci() func(x int) int { // for eular project find sum of all even num
 func Primefactor(num int) int {
 	result := num
 
-	i := 2
+	i := 3
 	
 	for i < result {
-		for result % i == 0 {
+		if result % i == 0 {
 			result = result / i
 		}
-		i = i + 1
+		i = i + 2
 	}
 
 	return result
@@ -81,4 +85,25 @@ func LgPalindrom() int {
         }
     }
     return maxProduct
+}
+
+
+// 1 2 3 2^2 5 3 2 7 2^3 3^2 5 2 11 2^2 3 13 7 2 5 3 2^4 17 2 3^2 19 2^2 5 all prime factors
+// 1 2^4 3^2 5 7 11 13 17 19 greatest prime factors
+
+// project euler answer number 5 232792560
+
+func FindDiffSquares(x int) int{
+	// start := time.Now()
+	sumsq := 0
+	sqsum := 0
+
+	for i:=0; i <= x; i++ {
+		sumsq += int(math.Pow(float64(i), 2))
+		sqsum += i
+	}
+	sqsum = int(math.Pow(float64(sqsum), 2))
+
+	// fmt.Println(time.Since(start).Nanoseconds())
+	return sqsum - sumsq
 }

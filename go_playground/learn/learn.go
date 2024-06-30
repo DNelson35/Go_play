@@ -31,8 +31,9 @@ func main(){
 
 	// utils.SumMul(3,5)
 
-	// utils.Primefactor(600851475143)
-	fmt.Println(utils.LgPalindrom())
+	// fmt.Println(utils.Primefactor(600851475143))
+	// fmt.Println(utils.LgPalindrom())
+	fmt.Println(utils.FindDiffSquares(100))
 
 
 
