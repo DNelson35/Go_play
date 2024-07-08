@@ -106,56 +106,32 @@ func FindDiffSquares(x int) int{
 	return sqsum - sumsq
 }
 
-// current problem: one i need to check to see if it is a system directory before trying to access i belive that is one part of the problem as well as it is being appended to the dirstosearch which i dont want. second problem I need to rethink how i stor the dirctories to seach or how to get the path to the dir that holds them i belive the problem is that im not currently in the directory and im tring to read form a directory nested so it cant see the direcotry im tring to acess
+// as is jump directory recursively searches through file system depth first search.
+
+func JumpDirectory(name string, currDir string) string {
 
 
-
-func JumpDirectory(name string) string {
-	userdir, err := os.UserHomeDir()
-	dirstoSearch := [][]fs.DirEntry{}
-
-	if err != nil{
-		fmt.Println("error getting user directory: ", err)
-	}
-	
-	os.Chdir(userdir)
-	cleanDirs, path := getDirs(userdir, name)
+	os.Chdir(currDir)
+	cleanPaths, path := getDirs(currDir, name)
 
 	if path != ""{
 		return path
 	}
 
-	path = FileTree(name, cleanDirs, &dirstoSearch)
-
-	for _, dirset := range dirstoSearch {
-		FileTree(name, dirset, &dirstoSearch)
+	for _, absPath := range cleanPaths{
+		path = JumpDirectory(name, absPath)
+		if path != "" {
+			break
+		}
 	}
-	// fmt.Println(dirstoSearch)
+
+	fmt.Println(path)
 	return path
 }
 
-func FileTree(name string, cleanDirs []fs.DirEntry, dirstoSearch *[][]fs.DirEntry)string{
-	fmt.Println(cleanDirs)
-	for _, dir := range cleanDirs{
-		// os.Chdir(dir.Name())
-		fmt.Println(filepath.Abs(dir.Name()))
-		dirs, path := getDirs(dir.Name(), name)
-		if path != ""{
-			// fmt.Println(path)
-			return path
-		}
-		*dirstoSearch = append(*dirstoSearch, dirs)
-	}
 
-	// if len(*dirstoSearch) > 0 {
-	// 	*dirstoSearch = (*dirstoSearch)[1:]
-	// }
-	
-	return ""
-}
-
-func searchVisDirs(dirs []fs.DirEntry, name string)([]fs.DirEntry, string) {
-	var visDirs []fs.DirEntry
+func searchVisDirs(dirs []fs.DirEntry, name string)([]string, string) {
+	var visDirs []string
 	for _, dir := range dirs{
 		if dir.Name()[0] == '.' || !dir.IsDir(){
 			continue
@@ -165,7 +141,11 @@ func searchVisDirs(dirs []fs.DirEntry, name string)([]fs.DirEntry, string) {
 		}
 
 		if len(dirs) != 0{
-			visDirs = append(visDirs, dir)
+			path, err := filepath.Abs(dir.Name())
+			if err != nil {
+				fmt.Println(err)
+			}
+			visDirs = append(visDirs, path)
 		}
 		
 	}
@@ -177,10 +157,8 @@ func checkMatch(name string, dir fs.DirEntry)bool{
 	
 }
 
-func getDirs(dir string, name string)([]fs.DirEntry, string){
+func getDirs(dir string, name string)([]string, string){
 	dirs, err := os.ReadDir(dir)
-
-	// fmt.Println(dirs)
 	
 	if err != nil {
 		fmt.Println(err)

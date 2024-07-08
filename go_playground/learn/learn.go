@@ -1,8 +1,9 @@
 package main
 
 import (
-	// "fmt"
+	"fmt"
 	"learn/utils"
+	"os"
 	// "learn/utils"
 	// "path/filepath"
 	// "strings"
@@ -37,6 +38,13 @@ func main(){
 	// fmt.Println(utils.LgPalindrom())
 	// fmt.Println(utils.FindDiffSquares(100))
 
-	utils.JumpDirectory("CliqueBoard")
+	dir, err := os.UserHomeDir()
+
+	if err != nil {
+		fmt.Println("could not get user home dir")
+	}
+
+	utils.JumpDirectory("CliqueBoard", dir, )
+
 
 }
