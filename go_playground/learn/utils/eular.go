@@ -106,7 +106,7 @@ func FindDiffSquares(x int) int{
 	return sqsum - sumsq
 }
 
-// as is jump directory recursively searches through file system depth first search.
+// as is jump directory recursively searches through file system depth first search. not ment to be used as is. current implementation was to DFS the file tree using recursive calls. -- not for use -- practice go language 
 
 func JumpDirectory(name string, currDir string) string {
 
