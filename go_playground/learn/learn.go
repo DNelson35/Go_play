@@ -44,7 +44,7 @@ func main(){
 		fmt.Println("could not get user home dir")
 	}
 
-	utils.JumpDirectory("CliqueBoard", dir, )
+	utils.JumpDirectory("code", dir, )
 
 
 }
