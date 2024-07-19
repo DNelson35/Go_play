@@ -44,7 +44,7 @@ func main(){
 		fmt.Println("could not get user home dir")
 	}
 
-	utils.JumpDirectory("code", dir, )
+	utils.JumpDirectory("Go_play", dir)
 
 
 }

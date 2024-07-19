@@ -33,7 +33,7 @@ func JumpDirectory(name string, currDir string) string {
 func searchVisDirs(dirs []fs.DirEntry, name string)([]string, string) {
 	var visDirs []string
 	for _, dir := range dirs{
-		if dir.Name()[0] == '.' || !dir.IsDir(){
+		if dir.Name()[0] == '.' || !dir.IsDir() || dir.Name() == "node_modules"{
 			continue
 		}else if checkMatch(name, dir){
 			path, _ := filepath.Abs(dir.Name())
@@ -52,7 +52,8 @@ func searchVisDirs(dirs []fs.DirEntry, name string)([]string, string) {
 	return visDirs, ""
 }
 
-func checkMatch(name string, dir fs.DirEntry)bool{		
+func checkMatch(name string, dir fs.DirEntry)bool{	
+	fmt.Println(dir.Name())	
 	return dir.Name() == name 
 	
 }
