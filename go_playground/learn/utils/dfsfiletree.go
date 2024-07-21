@@ -1,14 +1,15 @@
 package utils
 
 import (
-
 	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
+	"strings"
+	"slices"
 )
 
-// as is jump directory recursively searches through file system depth first search. not ment to be used as is. current implementation was to DFS the file tree using recursive calls. -- not for use -- practice go language 
+// as is jump directory recursively searches through file system depth first search. not ment to be used as is. current implementation was to DFS the file tree using recursive calls. -- not for use -- practice go language
 
 func JumpDirectory(name string, currDir string) string {
 	os.Chdir(currDir)
@@ -32,8 +33,9 @@ func JumpDirectory(name string, currDir string) string {
 
 func searchVisDirs(dirs []fs.DirEntry, name string)([]string, string) {
 	var visDirs []string
+	patterns := []string{"node_modules", "__pycache__", "npm"}
 	for _, dir := range dirs{
-		if dir.Name()[0] == '.' || !dir.IsDir() || dir.Name() == "node_modules"{
+		if dir.Name()[0] == '.' || !dir.IsDir() || slices.Contains(patterns, dir.Name()) {
 			continue
 		}else if checkMatch(name, dir){
 			path, _ := filepath.Abs(dir.Name())
@@ -54,7 +56,7 @@ func searchVisDirs(dirs []fs.DirEntry, name string)([]string, string) {
 
 func checkMatch(name string, dir fs.DirEntry)bool{	
 	fmt.Println(dir.Name())	
-	return dir.Name() == name 
+	return strings.EqualFold(dir.Name(), name ) 
 	
 }
 

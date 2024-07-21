@@ -43,8 +43,10 @@ func main(){
 	if err != nil {
 		fmt.Println("could not get user home dir")
 	}
+	
+	utils.JumpDirectory("jump_dir", dir)
 
-	utils.JumpDirectory("Go_play", dir)
+	
 
 
 }
