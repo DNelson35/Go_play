@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"learn/utils"
-	"os"
 	// "learn/utils"
 	// "path/filepath"
 	// "strings"
@@ -38,13 +37,16 @@ func main(){
 	// fmt.Println(utils.LgPalindrom())
 	// fmt.Println(utils.FindDiffSquares(100))
 
-	dir, err := os.UserHomeDir()
+	// dir, err := os.UserHomeDir()
 
-	if err != nil {
-		fmt.Println("could not get user home dir")
-	}
+	// if err != nil {
+	// 	fmt.Println("could not get user home dir")
+	// }
 	
-	utils.JumpDirectory("jump_dir", dir)
+	// fmt.Println(utils.JumpDirectory("vendor", dir + "/Development/collaborations"))
+	var nums = []int{2,-1,1}
+
+	fmt.Println(utils.FindClosetToZero(nums))
 
 	
 
