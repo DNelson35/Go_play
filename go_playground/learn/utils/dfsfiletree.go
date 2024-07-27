@@ -26,7 +26,6 @@ func JumpDirectory(name string, currDir string) string {
 		}
 	}
 
-	fmt.Println(path)
 	return path
 }
 
@@ -55,9 +54,7 @@ func searchVisDirs(dirs []fs.DirEntry, name string)([]string, string) {
 }
 
 func checkMatch(name string, dir fs.DirEntry)bool{	
-	fmt.Println(dir.Name())	
 	return strings.EqualFold(dir.Name(), name ) 
-	
 }
 
 func getDirs(dir string, name string)([]string, string){
