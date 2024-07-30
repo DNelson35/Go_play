@@ -44,9 +44,9 @@ func main(){
 	// }
 	
 	// fmt.Println(utils.JumpDirectory("vendor", dir + "/Development/collaborations"))
-	var nums = []int{2,-1,1}
+	// var nums = []int{2,-1,1}
 
-	fmt.Println(utils.FindClosetToZero(nums))
+	fmt.Println(utils.MaxRot(7402180370304))
 
 	
 
