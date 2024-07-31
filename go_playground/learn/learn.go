@@ -46,7 +46,7 @@ func main(){
 	// fmt.Println(utils.JumpDirectory("vendor", dir + "/Development/collaborations"))
 	// var nums = []int{2,-1,1}
 
-	fmt.Println(utils.FirstNonRepeating("aa"))
+	fmt.Println(utils.GetPrime(10001))
 
 	
 

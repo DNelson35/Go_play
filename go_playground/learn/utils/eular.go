@@ -104,6 +104,28 @@ func FindDiffSquares(x int) int{
 }
 
 
+func checkPrime(num int) bool{
+	if num <= 1 {return false}
+	if num <= 3 {return true}
+	if num % 2 == 0 || num % 3 == 0 {return false}
+	for i:=5; i * i <= num; i+= 6{
+		if num % i == 0|| num % (i+2) == 0 {return false}
+	}
+	return true
+}
+
+func GetPrime(n int) int{
+    i := 0
+    num := 1
+    for i < n {
+        num++
+        if (checkPrime(num)) {
+            i++
+        }
+    }
+    return num
+}
+
 
 
 
