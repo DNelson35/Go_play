@@ -46,7 +46,7 @@ func main(){
 	// fmt.Println(utils.JumpDirectory("vendor", dir + "/Development/collaborations"))
 	// var nums = []int{2,-1,1}
 
-	fmt.Println(utils.MaxRot(7402180370304))
+	fmt.Println(utils.FirstNonRepeating("aa"))
 
 	
 

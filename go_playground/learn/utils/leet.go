@@ -1,9 +1,10 @@
 package utils
 
 import (
+	"fmt"
 	"math"
 	"strconv"
-	"fmt"
+	"strings"
 )
 func FindClosetToZero(nums []int) int{
 	closestNumber := math.MaxInt64 
@@ -45,4 +46,28 @@ func MaxRot(n int64) int64 {
 		}
 	}
 	return highValue
+}
+
+func FirstNonRepeating(str string) string {
+	if len(str) <= 1 {
+		return str
+	}
+	repeatedStr := map[string]string{}
+	for i := 0; i < len(str); i++ {
+		char := str[i]
+		answer := string(char)
+		for j := i + 1; j < len(str); j++{
+			if repeatedStr[string(char)] == string(char){
+				answer = ""
+			}
+			if strings.EqualFold(string(char), string(str[j])) {
+				answer = ""
+				repeatedStr[string(char)] = string(char)
+			}
+		}
+		if repeatedStr[answer] != answer{
+			return answer
+		}
+	}
+	return ""
 }
