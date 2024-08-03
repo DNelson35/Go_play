@@ -71,3 +71,20 @@ func FirstNonRepeating(str string) string {
 	}
 	return ""
 }
+
+func Alphanumeric(str string) bool {
+	if len(str) == 0 {
+		return false
+	}
+
+	for _, val := range str {
+		switch {
+		case val < 48 || val > 57 && val < 65 || val > 90 && val < 97:
+			return false
+		default:
+			continue
+		}
+	}
+
+	return true
+}
