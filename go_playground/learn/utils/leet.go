@@ -72,6 +72,19 @@ func FirstNonRepeating(str string) string {
 	return ""
 }
 
+// ".*?" ==> To(Equal(false)) ✔️
+	// "a" ==> To(Equal(true)) ✔️
+	// "Mazinkaiser" ==> To(Equal(true)) ✔️
+	// "hello world_" ==> To(Equal(false)) ✔️
+	// "     " ==> To(Equal(false)) ✔️
+	// "PassW0rd" ==> To(Equal(true)) ✔️
+	// "" ==> To(Equal(false)) ✔️
+	// "\n\t\n" ==> To(Equal(false)) ✔️
+	// "ciao\n$$_" ==> To(Equal(false)) ✔️
+	// "__ * __" ==> To(Equal(false)) ✔️
+	// "&)))(((" ==> To(Equal(false)) ✔️
+	// "43534h56jmTHHF3k" ==> To(Equal(true)) ✔️
+
 func Alphanumeric(str string) bool {
 	if len(str) == 0 {
 		return false
@@ -87,4 +100,18 @@ func Alphanumeric(str string) bool {
 	}
 
 	return true
+}
+
+func WordCount(s string) map[string]int {
+	countMap := map[string]int{}
+	stringArr := strings.Split(s, " ")
+	for _, word := range stringArr {
+	w, ok := countMap[word]
+	 if ok {
+	 	countMap[word] = w + 1
+		continue
+	 }
+	 countMap[word] = 1
+	}
+	return countMap
 }
