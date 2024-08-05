@@ -13,10 +13,7 @@ import (
 
 
 func main(){
-	// s := strings.NewReader("V yvxr unz")
-	// r := utils.NewRot13Reader(s)
-	// io.Copy(os.Stdout, &r)
-
+	
 	// fmt.Println(utils.Primefactor(600851475143))
 	// fmt.Println(utils.LgPalindrom())
 	// fmt.Println(utils.FindDiffSquares(100))
