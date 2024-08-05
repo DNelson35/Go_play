@@ -6,6 +6,8 @@ import (
 		"io"
 )
 
+
+// learn/utils/euler.go
 func TestFibonacci(t *testing.T) {
     f := Fibonacci()
 	for i := 0; i < 10; i++ {
@@ -28,6 +30,46 @@ func TestSumMul(t *testing.T) {
 	}
 }
 
+func TestPrimeFactor(t *testing.T){
+	testData := []struct {
+		name string
+		input int
+		expected int
+	}{
+		{
+			name: "test 1",
+			input: 600851475143,
+			expected: 6857,
+		},
+		{
+			name: "test 2",
+			input: 0,
+			expected: 0,
+		},
+		{
+			name: "test 3",
+			input: 14,
+			expected: 7,
+		},
+		{
+			name: "test 4",
+			input: 25,
+			expected: 5,
+		},
+	}
+
+	for _, test := range testData {
+		t.Run(test.name, func(t *testing.T) {
+			r := Primefactor(test.input)
+
+			if r != test.expected {
+				t.Errorf("Expected: %d got %d", test.expected, r )
+			}
+		})
+	}
+}
+
+// learn/utils/rot13.go
 func TestRot13Reader(t *testing.T) {
 	testData := []struct {
 		name     string
