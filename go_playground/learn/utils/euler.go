@@ -3,11 +3,13 @@ package utils
 import (
 	"fmt"
 	"math"
-	// "time"
-	// "sort"
 )
 
-// returns the sum of all multiples of the two given numbers under 1000
+// SumMul calculates the sum of all integers between 0 and 999 (inclusive)
+// that are divisible by either x or y. It iterates through each integer in the range,
+// checks if the current integer is divisible by both x and y using the modulus operator,
+// and if so, adds it to the running total stored in 'sum'. Finally, it returns the
+// accumulated sum after completing the loop.
 func SumMul(x , y int) int {
 	sum := 0
 	for i:=0; i < 1000; i++ {
@@ -43,6 +45,13 @@ func Fibonacci() func(x int) int {
 	}
 }
 
+// Primefactor calculates the largest prime factor of a given positive integer.
+//
+// The function initializes the result with the input number and iterates from 3 upwards,
+// incrementing by 2 each time to skip even numbers (since even numbers greater than 2 cannot be prime).
+// For each iteration, if the result is divisible by the current iterator (i), it divides the result by i.
+// If the result of the division is divisible by two, the result is changed to be equal to i, capturing the prime factor.
+// This process continues until the iterator exceeds the result, at which point the result contains the largest prime factor.
 func Primefactor(num int) int {
 	result := num
 
@@ -51,6 +60,9 @@ func Primefactor(num int) int {
 	for i < result {
 		if result % i == 0 {
 			result = result / i
+			if result % 2 == 0{
+				result = i
+			}
 		}
 		i = i + 2
 	}
