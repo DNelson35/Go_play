@@ -14,8 +14,5 @@ func main(){
 
 	// fmt.Println(utils.GetPrime(10001))
 
-	count := utils.WordCount("the one who knows one is one who knows none")
-
-	fmt.Println(count)
-
+	fmt.Println(utils.CreatePhoneNumber([]uint{1,2,3,4,5,6,7,8,9,0}))
 }

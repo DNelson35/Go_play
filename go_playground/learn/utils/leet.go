@@ -115,3 +115,21 @@ func WordCount(s string) map[string]int {
 	}
 	return countMap
 }
+
+// func CreatePhoneNumber(arr []uint)string{
+// 	return fmt.Sprintf("(%d%d%d) %d%d%d-%d%d%d%d", arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9])
+	
+// }
+
+// func CreatePhoneNumber(numbers []uint) string {
+//   var test string = strings.Trim(strings.Replace(fmt.Sprint(numbers), " ", "", -1), "[]")
+//   return fmt.Sprintf("(%s) %s-%s", test[0:3], test[3:6], test[6:10])  
+// }
+
+func CreatePhoneNumber(numbers []uint) string {
+  tmp := make([]interface{}, len(numbers))
+  for i, val := range numbers {
+    tmp[i] = val
+  }
+  return fmt.Sprintf("(%d%d%d) %d%d%d-%d%d%d%d", tmp...)
+}
