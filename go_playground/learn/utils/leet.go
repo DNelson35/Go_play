@@ -133,3 +133,42 @@ func CreatePhoneNumber(numbers []uint) string {
   }
   return fmt.Sprintf("(%d%d%d) %d%d%d-%d%d%d%d", tmp...)
 }
+
+
+// Expect(ToNato("If you can read")).To(Equal("India Foxtrot Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta"))
+//      Expect(ToNato("Did not see that coming")).To(Equal("Delta India Delta November Oscar Tango Sierra Echo Echo Tango Hotel Alfa Tango Charlie Oscar Mike India November Golf"))
+//      Expect(ToNato("go for it!")).To(Equal("Golf Oscar Foxtrot Oscar Romeo India Tango !"))
+
+var NATO = map[string]string{
+	"A":"Alfa","B":"Bravo","C":"Charlie","D":"Delta","E":"Echo","F":"Foxtrot","G":"Golf","H":"Hotel","I":"India","J":"Juliett","K":"Kilo","L":"Lima","M":"Mike","N":"November","O":"Oscar","P":"Papa","Q":"Quebec","R":"Romeo","S":"Sierra","T":"Tango","U":"Uniform","V":"Victor","W":"Whiskey","X":"Xray","Y":"Yankee","Z":"Zulu",
+}
+
+func ToNato(words string) string {
+	natoTranslatedText := ""
+	for _, char := range words{
+		if char == ' '{
+			continue
+		}
+		if char >= 33 && char <= 47 || char >=58 && char <= 64 {
+			natoTranslatedText += string(char)
+		}
+		natoTranslatedText += NATO[strings.ToUpper(string(char))] + " "
+	}
+	return strings.Trim(natoTranslatedText, " ")
+}
+
+func Int32ToIp(n uint32) string {
+	num := uint32(n)
+	iparray := []string{}
+	binaryStr := fmt.Sprintf("%032b", num)
+	
+	for i:=1; i<=len(binaryStr); i++ {
+		if i % 8 == 0 && i != 0 {
+			binaryChunk := binaryStr[i-8: i]
+			intChunk, _ := strconv.ParseUint(binaryChunk, 2, 8)
+			iparray = append(iparray, strconv.Itoa(int(intChunk)))
+		}
+	}
+	ip := strings.Join(iparray, ".")
+	return ip
+}
