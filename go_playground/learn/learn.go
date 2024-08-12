@@ -17,5 +17,6 @@ func main(){
 	// fmt.Println(utils.CreatePhoneNumber([]uint{1,2,3,4,5,6,7,8,9,0}))
 	// fmt.Println(utils.ToNato("go for it!"))
 
-	fmt.Println(utils.Int32ToIp(2149583361))
+	// fmt.Println(utils.Int32ToIp(2149583361))
+	fmt.Println(utils.SquaresInRect(5,3))
 }

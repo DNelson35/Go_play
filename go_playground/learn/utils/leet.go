@@ -161,7 +161,7 @@ func Int32ToIp(n uint32) string {
 	num := uint32(n)
 	iparray := []string{}
 	binaryStr := fmt.Sprintf("%032b", num)
-	
+
 	for i:=1; i<=len(binaryStr); i++ {
 		if i % 8 == 0 && i != 0 {
 			binaryChunk := binaryStr[i-8: i]
@@ -171,4 +171,25 @@ func Int32ToIp(n uint32) string {
 	}
 	ip := strings.Join(iparray, ".")
 	return ip
+}
+
+
+func SquaresInRect(lng int, wdth int) []int {
+	if lng == wdth {
+		return nil
+	}
+
+	result := []int{}
+
+	for lng > 0 && wdth > 0 {
+		if lng < wdth {
+			result = append(result, lng)
+			wdth -= lng
+		} else {
+			result = append(result, wdth)
+			lng -= wdth
+		}
+	}
+
+	return result
 }
