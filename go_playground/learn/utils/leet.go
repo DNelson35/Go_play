@@ -214,3 +214,18 @@ func ProperFractions(n int) int {
 	return result
 }
 
+
+func JosephusSurvivor(n, k int) int {
+	if n == 1 {
+		return 1 
+	}
+
+	position := 0 
+
+	for i := 2; i <= n; i++ {
+		position = (position + k) % i
+	}
+
+	return position + 1
+}
+
