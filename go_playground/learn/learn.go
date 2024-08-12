@@ -18,5 +18,6 @@ func main(){
 	// fmt.Println(utils.ToNato("go for it!"))
 
 	// fmt.Println(utils.Int32ToIp(2149583361))
-	fmt.Println(utils.SquaresInRect(5,3))
+	// fmt.Println(utils.SquaresInRect(5,3))
+	fmt.Println(utils.ProperFractions(25))
 }
