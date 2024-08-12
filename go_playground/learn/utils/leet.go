@@ -229,3 +229,41 @@ func JosephusSurvivor(n, k int) int {
 	return position + 1
 }
 
+func Solution(nums []int) string {
+	if len(nums) == 0 {
+		return ""
+	}
+
+	var result []string
+	start := nums[0]
+	end := start
+
+	for i := 1; i < len(nums); i++ {
+		if nums[i] == end+1 {
+				end = nums[i]
+		} else {
+			if end > start+1 {
+					result = append(result, fmt.Sprintf("%d-%d", start, end))
+			} else if end > start {
+					result = append(result, fmt.Sprintf("%d,%d", start, end))
+			} else {
+					result = append(result, strconv.Itoa(start))
+			}
+			start = nums[i]
+			end = start
+		}
+	}
+
+	if end > start+1 {
+			result = append(result, fmt.Sprintf("%d-%d", start, end))
+	} else if end > start {
+			result = append(result, fmt.Sprintf("%d,%d", start, end))
+	} else {
+			result = append(result, strconv.Itoa(start))
+	}
+
+	return strings.Join(result, ",")
+}
+
+
+
