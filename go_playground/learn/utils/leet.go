@@ -229,7 +229,7 @@ func JosephusSurvivor(n, k int) int {
 	return position + 1
 }
 
-func Solution(nums []int) string {
+func Solution(nums []int) string { // convert num array to string shorten by adding - for consecutive numbers over 3
 	if len(nums) == 0 {
 		return ""
 	}
@@ -265,5 +265,17 @@ func Solution(nums []int) string {
 	return strings.Join(result, ",")
 }
 
+
+// ['a','b','c','d','f'] -> 'e'
+func FindMissingLetter(chars []rune) rune {
+	var missing rune
+	for i,r := range chars {
+		if r + 1 != chars[i+1]{
+			missing = r + 1
+			break
+		}
+	}
+	return missing
+}
 
 
