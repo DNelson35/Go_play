@@ -279,3 +279,36 @@ func FindMissingLetter(chars []rune) rune {
 }
 
 
+func FormatDuration(seconds int64) string {
+	if seconds == 0 {
+		return "now"
+	}
+
+	timeUnits := []struct {
+		unit   string
+		secondsInUnit int64
+	}{
+		{"year", 365 * 24 * 60 * 60},
+		{"day", 24 * 60 * 60},
+		{"hour", 60 * 60},
+		{"minute", 60},
+		{"second", 1},
+	}
+
+	var components []string
+	for _, timeUnit := range timeUnits {
+		if seconds >= timeUnit.secondsInUnit {
+			unitCount := seconds / timeUnit.secondsInUnit
+			seconds %= timeUnit.secondsInUnit
+			if unitCount > 1 {
+				timeUnit.unit += "s"
+			}
+			components = append(components, fmt.Sprintf("%d %s", unitCount, timeUnit.unit))
+		}
+	}
+
+	if len(components) == 1 {
+		return components[0]
+	}
+	return strings.Join(components[:len(components)-1], ", ") + " and " + components[len(components)-1]
+}
