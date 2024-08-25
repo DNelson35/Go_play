@@ -124,6 +124,7 @@ func FindDiffSquares(x int) int{
 }
 
 
+// checks if the the input num is a prime number returns a bool
 func checkPrime(num int) bool{
 	if num <= 1 {return false}
 	if num <= 3 {return true}
@@ -134,15 +135,16 @@ func checkPrime(num int) bool{
 	return true
 }
 
+// gets the prime number of the number n passed in ex. 1001th prime number is 104743
 func GetPrime(n int) int{
 	if n <= 0 {return 0}
 	i := 0
 	num := 1
 	for i < n {
-			num++
-			if (checkPrime(num)) {
-					i++
-			}
+		num++
+		if (checkPrime(num)) {
+			i++
+		}
 	}
 	return num
 }
