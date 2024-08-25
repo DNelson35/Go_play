@@ -1,4 +1,4 @@
-package main
+package quiz
 
 import (
 	"bufio"
@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func main() {
+func Quiz() {
 	fmt.Println("Welcome to my quiz game!") 
 	fmt.Printf("Would you like to play (y/n)? ") 
 	reader := bufio.NewReader(os.Stdin) 

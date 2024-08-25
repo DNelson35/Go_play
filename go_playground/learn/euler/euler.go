@@ -1,4 +1,4 @@
-package utils
+package euler
 
 import (
 	"fmt"
@@ -135,7 +135,7 @@ func checkPrime(num int) bool{
 	return true
 }
 
-// gets the prime number of the number n passed in ex. 1001th prime number is 104743
+// gets the prime number of the number n passed in ex. 10001th prime number is 104743
 func GetPrime(n int) int{
 	if n <= 0 {return 0}
 	i := 0

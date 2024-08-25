@@ -2,15 +2,13 @@ package main
 
 import (
 	"fmt"
-	"learn/utils"
+	"learn/leet"
 )
 
 
 func main(){
 	
-	fmt.Println(utils.GetPrime(10001))
-
-	// fmt.Println(utils.CreatePhoneNumber([]uint{1,2,3,4,5,6,7,8,9,0}))
+	fmt.Println(leet.CreatePhoneNumber([]uint{1,2,3,4,5,6,7,8,9,0}))
 	// fmt.Println(utils.ToNato("go for it!"))
 
 	// fmt.Println(utils.Int32ToIp(2149583361))
