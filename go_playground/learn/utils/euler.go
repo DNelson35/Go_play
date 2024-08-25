@@ -135,15 +135,16 @@ func checkPrime(num int) bool{
 }
 
 func GetPrime(n int) int{
-    i := 0
-    num := 1
-    for i < n {
-        num++
-        if (checkPrime(num)) {
-            i++
-        }
-    }
-    return num
+	if n <= 0 {return 0}
+	i := 0
+	num := 1
+	for i < n {
+			num++
+			if (checkPrime(num)) {
+					i++
+			}
+	}
+	return num
 }
 
 
