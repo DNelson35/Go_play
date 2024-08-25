@@ -98,6 +98,29 @@ func TestFindDiffSquares(t *testing.T) {
 	}
 }
 
+func TestGetPrime(t *testing.T) {
+	tests := []struct {
+			n        int
+			expected int
+	}{
+			{1, 2},   
+			{2, 3},   
+			{3, 5},   
+			{4, 7},   
+			{5, 11},  
+			{10, 29},  
+			{20, 71},  
+			{0, 0},     
+			{-5, 0},     
+	}
+
+	for _, tt := range tests {
+		result := GetPrime(tt.n)
+		if result != tt.expected {
+			t.Errorf("GetPrime(%d) = %d; want %d", tt.n, result, tt.expected)
+		}
+	}
+}
 
 
 // learn/utils/rot13.go
