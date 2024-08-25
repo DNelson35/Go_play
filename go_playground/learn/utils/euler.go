@@ -70,7 +70,7 @@ func Primefactor(num int) int {
 	return result
 }
 
-
+// Helper function to check if a number is a palindrome
 func isPalindrome(number int) bool {
     var reversed int
     var currentNumber = number
@@ -83,6 +83,7 @@ func isPalindrome(number int) bool {
     return reversed == number 
 }
 
+// Function to find the largest palindrome product of two 3-digit numbers
 func LgPalindrom() int {
     var maxProduct int
     for i := 990; i >= 100; i -= 11 {
@@ -107,8 +108,9 @@ func LgPalindrom() int {
 
 // project euler answer number 5 232792560
 
+
+// This function calculates the difference between the squares of the first x numbers and the square of the sum of the first x numbers. argument x is the bounds for number you would like this calculation to go up to.
 func FindDiffSquares(x int) int{
-	// start := time.Now()
 	sumsq := 0
 	sqsum := 0
 
@@ -118,7 +120,6 @@ func FindDiffSquares(x int) int{
 	}
 	sqsum = int(math.Pow(float64(sqsum), 2))
 
-	// fmt.Println(time.Since(start).Nanoseconds())
 	return sqsum - sumsq
 }
 

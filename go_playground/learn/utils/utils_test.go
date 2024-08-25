@@ -69,6 +69,37 @@ func TestPrimeFactor(t *testing.T){
 	}
 }
 
+func TestLgPalindrom(t *testing.T) {
+	expected := 906609 
+	result := LgPalindrom()
+
+	if result != expected {
+		t.Errorf("LgPalindrom() = %d; want %d", result, expected)
+	}
+}
+
+func TestFindDiffSquares(t *testing.T) {
+	tests := []struct {
+		x        int
+		expected int
+	}{
+		{1, 0},     
+		{2, 4},     
+		{3, 22},    
+		{10, 2640},      
+		{0, 0},          
+	}
+
+	for _, tt := range tests {
+		result := FindDiffSquares(tt.x)
+		if result != tt.expected {
+			t.Errorf("FindDiffSquares(%d) = %d; want %d", tt.x, result, tt.expected)
+		}
+	}
+}
+
+
+
 // learn/utils/rot13.go
 func TestRot13Reader(t *testing.T) {
 	testData := []struct {
